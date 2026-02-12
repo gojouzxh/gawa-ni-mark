@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Cambria', sans-serif;
             background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #ff69b4 100%);
             min-height: 100vh;
             display: flex;
@@ -119,6 +119,15 @@
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .message-modal-content .animated-border-decoration {
+            height: 400px;
+            margin: 20px 0;
+        }
+
+        .message-modal-content .animated-border-decoration img {
+            height: 400px;
         }
 
         .button-container {
@@ -324,62 +333,62 @@
             }
         }
 
-        /* Envelope Styles */
+        /* Enhanced Envelope Styles */
         .envelope-section-compact {
-            margin-top: 30px;
-            padding: 25px 0;
-            border-top: 1px solid rgba(255, 105, 180, 0.15);
-            border-bottom: 1px solid rgba(255, 105, 180, 0.15);
+            margin-top: 50px;
+            padding: 45px 20px;
+            background: linear-gradient(135deg, rgba(255, 192, 203, 0.1), rgba(255, 105, 180, 0.08));
+            border-radius: 20px;
+            border: 2px solid rgba(255, 105, 180, 0.2);
         }
 
         .envelope-title {
-            font-size: 1.1rem;
-            color: #d4526e;
-            margin-bottom: 20px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-size: 1.4rem;
+            color: #ff1493;
+            margin-bottom: 35px;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: capitalize;
             font-family: 'Georgia', serif;
+            text-shadow: 0 2px 4px rgba(255, 105, 180, 0.1);
         }
 
         .envelopes-container-compact {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            justify-items: center;
+            gap: 25px;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .envelope-single {
-            width: 85px;
-            height: 65px;
+            width: 110px;
+            height: 85px;
             cursor: pointer;
-            perspective: 1000px;
-            transition: all 0.3s ease;
+            perspective: 1200px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
         }
 
         .envelope-single:hover {
-            transform: scale(1.1) translateY(-4px);
-            filter: drop-shadow(0 6px 12px rgba(255, 20, 147, 0.2));
+            transform: translateY(-12px) scale(1.08) rotateZ(-2deg);
+            filter: drop-shadow(0 15px 25px rgba(255, 20, 147, 0.35));
         }
 
         .envelope-single .envelope-front {
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #ffd6e8 0%, #ffe4f0 100%);
-            border: 2px solid #d4526e;
-            border-radius: 4px;
+            background: linear-gradient(135deg, #ffe8f0 0%, #fff0f6 50%, #ffd6e8 100%);
+            border: 2.5px solid #ff1493;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .envelope-single:hover .envelope-front {
-            border-color: #ff1493;
-            box-shadow: 0 6px 14px rgba(255, 20, 147, 0.18);
+            box-shadow: 0 8px 20px rgba(255, 20, 147, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
         }
 
         .envelope-single .envelope-front::before {
@@ -389,24 +398,54 @@
             left: 0;
             right: 0;
             height: 50%;
-            background: linear-gradient(to bottom, #f9bfd4, rgba(255, 192, 203, 0.3));
-            border-bottom: 1px solid rgba(212, 82, 110, 0.3);
-            border-radius: 4px 4px 0 0;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6), rgba(255, 192, 203, 0.3));
+            border-bottom: 2px solid rgba(255, 105, 180, 0.3);
+            border-radius: 8px 8px 0 0;
+            transition: all 0.4s ease;
+        }
+
+        .envelope-single:hover .envelope-front::before {
+            height: 55%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 192, 203, 0.4));
+        }
+
+        .envelope-single:hover .envelope-front {
+            border-color: #ff69b4;
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.45), inset 0 1px 0 rgba(255, 255, 255, 1), inset 0 0 20px rgba(255, 105, 180, 0.1);
+            background: linear-gradient(135deg, #fff0f6 0%, #ffe8f0 50%, #ffddec 100%);
         }
 
         .envelope-single .heart {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             z-index: 2;
-            animation: heart-pulse 1.8s ease-in-out infinite;
+            animation: heart-pulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            text-shadow: 0 2px 8px rgba(255, 20, 147, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .envelope-single:hover .heart {
+            font-size: 2.6rem;
+            animation: heart-pulse-intense 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
         }
 
         @keyframes heart-pulse {
             0%, 100% {
                 transform: scale(1);
-                opacity: 0.7;
+                opacity: 0.8;
             }
             50% {
-                transform: scale(1.15);
+                transform: scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        @keyframes heart-pulse-intense {
+            0%, 100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.35);
                 opacity: 1;
             }
         }
@@ -439,7 +478,7 @@
 
         .custom-alert-image {
             width: 100%;
-            max-width: 300px;
+            max-width: 500px;
             height: auto;
             margin-bottom: 25px;
             border-radius: 10px;
@@ -645,21 +684,46 @@
 
         /* Animated border */
         .success-border {
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border-radius: 40px;
-            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ff1493 100%);
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.8;
+            display: none;
         }
 
-        @keyframes none {
-            0%, 100% {
-                opacity: 0.8;
+        /* Fix for side-by-side images */
+        .success-images-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 40px auto;
+            flex-wrap: nowrap;
+            position: relative;
+            height: 360px;
+            width: fit-content;
+        }
+
+        .success-images-container .animated-border-decoration {
+            flex-shrink: 0;
+            width: auto;
+            height: 340px;
+            margin: 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .success-images-container .animated-border-decoration {
+            transform: none;
+        }
+
+        .success-images-container .animated-border-decoration img {
+            height: 340px;
+            width: auto;
+            object-fit: contain;
+            background: transparent;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        @media (max-width: 600px) {
+            .success-images-container {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -668,7 +732,7 @@
     <div class="heart-bg" id="heartBg"></div>
 
     <div class="container" id="mainContainer">
-        <h1>will you be my valentine?</h1>
+        <h1>will you be my duo on codm?</h1>
         
         <div class="animated-border-decoration">
             <img src="https://media.tenor.com/mxg1RwQmzQQAAAAm/peach-goma-love-pat-head-cheek.webp" />
@@ -684,37 +748,34 @@
     <div class="success-container" id="successContainer">
         <div class="success-border"></div>
         
-        <div class="animated-border-decoration">
-            <img src="https://i.pinimg.com/736x/1a/a3/07/1aa3074b4dde9e375c71b09f8cf1ae4f.jpg" alt="Decoration" />
+        <div class="success-images-container">
+            <div class="animated-border-decoration">
+                <img src="https://api.removal.ai/download/g1/preview/32664f43-e421-4ef4-8175-3337ec2f5a23.png" alt="Celebration" />
+            </div>
         </div>
         
-        <!-- 5 Envelope Messages -->
+        <!-- 4 Envelope Messages -->
         <div class="envelope-section-compact">
-            <p class="envelope-title">please choose 2 carefully :> </p>
+            <p class="envelope-title">please read this 4 envelop slowly hehe thanks! :> </p>
             <div class="envelopes-container-compact">
-                <div class="envelope-single" data-message="picnic Date?">
+                <div class="envelope-single" data-message="hii Kat, I just want to say that you are truly beautiful. It's not only about how you look, but the way you carry yourself. There's something naturally graceful and genuine about you. Your smile and the way you express yourself make you even more special. You have a kind of beauty that feels real and effortless." data-image="https://api.removal.ai/download/g2/preview/2573e81f-6d2a-4212-85bc-b9ec162fa818.png">
                     <div class="envelope-front">
-                        <div class="heart">?</div>
+                        <div class="heart">💌</div>
                     </div>
                 </div>
-                <div class="envelope-single" data-message="beach date?">
+                <div class="envelope-single" data-message="Kat, you have a very natural and refreshing kind of beauty. It stands out in a quiet but powerful way. You also have such a cute and gentle presence that makes people feel comfortable around you. It's rare to see someone who is both beautiful and genuinely warm at the same time." data-image="https://api.removal.ai/download/g1/preview/32f5469a-35c1-428b-9d28-da6bde1acd29.png">
                     <div class="envelope-front">
-                        <div class="heart">?</div>
+                        <div class="heart">💌</div>
                     </div>
                 </div>
-                <div class="envelope-single" data-message="pizza planet date?">
+                <div class="envelope-single" data-message="hii i just want to appreciate how beautiful you are, Kat. There's a softness and sincerity in your expressions that make you look even more lovely. Your cuteness isn't forced, it's simply who you are. It's something that makes you memorable in the best way." data-image="https://api.removal.ai/download/g1/preview/ff44abf2-444a-49b9-9119-9b886a902ad8.png">
                     <div class="envelope-front">
-                        <div class="heart">?</div>
+                        <div class="heart">💌</div>
                     </div>
                 </div>
-                <div class="envelope-single" data-message="Flowers and Miniso?">
+                <div class="envelope-single" data-message="hiii Kat, you have a calm and elegant beauty that's hard to ignore. The way you smile and the way you present yourself show confidence and kindness. You're not just physically beautiful, there's a natural charm in you that makes you even more attractive." data-image="https://api.removal.ai/download/g1/preview/ed89265e-f07d-4b56-aeef-18321378b502.png">
                     <div class="envelope-front">
-                        <div class="heart">?</div>
-                    </div>
-                </div>
-                <div class="envelope-single" data-message="mall date?">
-                    <div class="envelope-front">
-                        <div class="heart">?</div>
+                        <div class="heart">💌</div>
                     </div>
                 </div>
             </div>
@@ -726,8 +787,8 @@
         <div class="message-modal-content">
             <span class="close-modal">&times;</span>
             <div class="animated-border-decoration">
-            <img src="https://i.pinimg.com/1200x/33/bd/88/33bd88933da6c671a13f42f186c87b98.jpg" />
-        </div>	
+                <img id="modalImage" src="https://api.removal.ai/download/g1/preview/32664f43-e421-4ef4-8175-3337ec2f5a23.png" />
+            </div>	
             <p class="message-text" id="messageText"></p>
             <button class="close-message-btn">Close</button>
         </div>
@@ -770,26 +831,26 @@
             noClickCount++;
             
             // Show different alert messages based on click count
-                        const alerts = [
+            const alerts = [
                 {
-                    message: "hell nah you sure?",
-                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW8yeHhqcWQ0Ym1nb3NqMXlnZTQyNjMycHRvOXQ0ZWFzNjR1MWRzbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KsMT02cXvy0AN7j4Md/giphy.gif"
+                    message: "why mahina bako?",
+                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNtMGc1eXdjdW55NXJkMnpvYWRqdDI1Mm43Y3RqZGF6eG5xbGpsbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/aWMJvA76tNnBR9gkpT/giphy.gif"
                 },
                 {
-                    message: "minsan lang to oh",
-                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW8yeHhqcWQ0Ym1nb3NqMXlnZTQyNjMycHRvOXQ0ZWFzNjR1MWRzbCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/edx4Z0hj7sqkaJOJSe/giphy.gif"
+                    message: "why huhu papalakas nako sige na please",
+                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTQ1ZTJmb3piZXVwdDd2ZDM0ZDY4bjZnampzMXVkanB4Y2J4cXZvYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ruyS8Zw9sBqE5UjOnY/giphy.gif"
                 },
                 {
                     message: "sige na please, ganda :c",
+                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTQ1ZTJmb3piZXVwdDd2ZDM0ZDY4bjZnampzMXVkanB4Y2J4cXZvYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/PgZ4djoK15fQdPQ1gG/giphy.gif"
+                },
+                {
+                    message: "plsease ganda payag kana huhu",
                     image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMHo2ZTNpdnR1bm53eXZnNDZ6eW9hejRnaGV2NHFpaTNubXNkazY0NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/9uwnYUDw342pq/giphy.gif"
                 },
                 {
-                    message: "ge ganyanan na ah",
-                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaWt1bjRrYnF2eXF5eHo1N3J1ZzgwNm54ajNjanE0a3lnM2Y2MTN3byZlcD12MV9naWZzX3NlYXJjaCZjdD1n/kqRb2OuD8OskE/giphy.gif"
-                },
-                {
-                    message: "ok, wala e nasakin huling halakhak AHAHAHAHAH",
-                    image: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExejd4bG0yZzg2aHQyajdoemxla2M1czFqemp0aHh3ZjBwY3ZucTF6diZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Iy1PWGPb7Hz3AI4e3T/giphy.webp"
+                    message: "alam mo pumayag kana kasi wala lang ang cute mo",
+                    image: "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNtMGc1eXdjdW55NXJkMnpvYWRqdDI1Mm43Y3RqZGF6eG5xbGpsbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/y93x7gLXTO5dnSWCEI/giphy.gif"
                 }
             ];
             
@@ -842,10 +903,15 @@
             thankYouHeading.style.cssText = 'color: #ff1493; font-size: 2rem; margin-bottom: 20px; font-weight: bold;';
             thankYouHeading.textContent = 'Yippeeeeee';
             
+            // Create GIF image
+            const thankYouGif = document.createElement('img');
+            thankYouGif.src = 'https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYTNtMGc1eXdjdW55NXJkMnpvYWRqdDI1Mm43Y3RqZGF6eG5xbGpsbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ytu2GUYbvhz7zShGwS/giphy.gif';
+            thankYouGif.style.cssText = 'width: 100%; max-width: 300px; height: auto; margin: 20px 0; border-radius: 10px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);';
+            
             // Create thank you message
             const thankYouText = document.createElement('p');
             thankYouText.className = 'custom-alert-text';
-            thankYouText.textContent = 'thank you for clicking yes, sana di napilitan noh?';
+            thankYouText.textContent = 'thank you for clicking yes pretty i wuv u!! <3';
             thankYouText.style.marginBottom = '30px';
             
             // Create proceed button
@@ -878,6 +944,7 @@
             
             // Assemble modal
             thankYouModal.appendChild(thankYouHeading);
+            thankYouModal.appendChild(thankYouGif);
             thankYouModal.appendChild(thankYouText);
             thankYouModal.appendChild(proceedButton);
             thankYouOverlay.appendChild(thankYouModal);
@@ -1020,11 +1087,19 @@
         const messageText = document.getElementById('messageText');
         const closeModalBtn = document.querySelector('.close-modal');
         const closeMessageBtn = document.querySelector('.close-message-btn');
+        const modalImage = document.getElementById('modalImage');
 
         envelopes.forEach(envelope => {
             envelope.addEventListener('click', () => {
                 const message = envelope.getAttribute('data-message');
+                const imageUrl = envelope.getAttribute('data-image');
                 messageText.textContent = message;
+                
+                // Update the image in the modal
+                if (modalImage) {
+                    modalImage.src = imageUrl;
+                }
+                
                 messageModal.classList.add('show');
             });
         });
